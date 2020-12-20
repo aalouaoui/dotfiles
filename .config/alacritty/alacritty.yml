@@ -1,0 +1,94 @@
+colors:
+  # Default colors
+  primary:
+    background: '#080808'
+    foreground: '#bdc3c7'
+
+  # Normal colors
+  normal:
+    black:   '#434343'  # Arbitrary
+    red:     '#B53F3F'
+    green:   '#48B53F'
+    yellow:  '#B5B13F'
+    blue:    '#3F51B5'
+    magenta: '#8A3FB5'  # Dark pink of the original material theme
+    cyan:    '#3FB5A7'
+    white:   '#ffffff'  # Arbitrary
+
+  # Bright colors
+  bright:
+    black:   '#434343'  # Arbitrary
+    red:     '#B53F3F'
+    green:   '#48B53F'
+    yellow:  '#B5B13F'
+    blue:    '#3F51B5'
+    magenta: '#8A3FB5'  # Pink of the original material theme
+    cyan:    '#3FB5A7'
+    white:   '#ffffff'  # Arbitrary
+
+# Font configuration (changes require restart)
+font:
+  # The size to use.
+  size: 12
+  # The normal (roman) font face to use.
+  normal:
+    family: FiraCode Nerd Font Mono
+    # Style can be specified to pick a specific face.
+    style: Regular
+
+  # The bold font face
+  bold:
+    family: FiraCode Nerd Font Mono
+    # Style can be specified to pick a specific face.
+    style: Bold
+
+  # The italic font face
+  italic:
+    family: FiraCode Nerd Font Mono
+    # Style can be specified to pick a specific face.
+    style: Italic
+
+  # Offset is the extra space around each character. offset.y can be thought of
+  # as modifying the linespacing, and offset.x as modifying the letter spacing.
+  offset:
+    x: -1
+    y: 1
+
+  # Glyph offset determines the locations of the glyphs within their cells with
+  # the default being at the bottom. Increase the x offset to move the glyph to
+  # the right, increase the y offset to move the glyph upward.
+  glyph_offset:
+    x: 0
+    y: 0
+
+
+window:
+  # Window padding (changes require restart)
+  #
+  # Blank space added around the window in pixels. This padding is not scaled by
+  # DPI and the specified value is always added at both opposing sides.
+  padding:
+    x: 5
+    y: 5
+
+  # Spread additional padding evenly around the terminal content.
+  dynamic_padding: true
+
+background_opacity: 0.9
+
+cursor:
+  # Cursor style
+  #
+  # Values for 'style':
+  #   - ▇ Block
+  #   - _ Underline
+  #   - | Beam
+  style: Beam
+
+shell:
+  # program: /usr/bin/xonsh
+  program: /usr/bin/fish
+  # program: /usr/bin/zsh
+  # args:
+    # - --command=tmux
+

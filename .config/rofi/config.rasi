@@ -1,0 +1,10 @@
+/** Basic config file **/
+
+configuration {
+	modi: 		"window,drun,ssh,combi,windowcd,run,keys,file-browser";
+  	show-icons:	true;
+  	icon-theme:	"Papirus";
+  	font:		"Noto Sans 10";
+  	/** theme: "./user-themes/flat-orange"; **/
+  	theme: "./launchers/colorful/style_3";
+}

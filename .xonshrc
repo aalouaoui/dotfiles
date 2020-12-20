@@ -1,0 +1,51 @@
+###########
+# Aliases #
+###########
+aliases["ls"] = 'lsd -h --group-dirs first'
+aliases["ll"] = 'lsd -hal --group-dirs first'
+aliases["la"] = 'lsd -ha --group-dirs first'
+
+aliases["bat"] = 'bat -P'
+
+aliases["colorscript"] = '/opt/shell-color-scripts/colorscript.sh'
+aliases["xephyr"] = 'Xephyr -br -ac -noreset -screen 1360x700 :1 &'
+
+####################
+# PowerLine Config #
+####################
+$PL_EXTRA_SEC = {"os": lambda: ['  ', 'BLUE', 'WHITE']}
+
+$PL_PROMPT='os>cwd>branch>virtualenv'
+$PL_RPROMPT = 'timing>rtns'  # for no toolbar
+$PL_TOOLBAR = '!'
+$PL_SEP_MODE = "flame"
+$PL_MULTILINE_PROMPT = True
+
+$PL_ORG_SEP_THIN= ""
+
+$PL_COLORS = dict(
+	who=("WHITE", "GREEN"),
+	branch=("WHITE"),
+	cwd=("WHITE", "BLUE"),
+	git_root=("WHITE", "BLUE"),
+	git_sub_dir=("WHITE", "BLUE"),
+	short_cwd=("WHITE", "BLUE"),
+	full_proc=("WHITE", "PURPLE", "CYAN"),
+	timing=("BLUE", "WHITE"),
+	time=("BLUE", "WHITE"),
+	time=("WHITE", "PURPLE"),
+	full_rtns=("WHITE", "RED", "GREEN"),
+)
+
+xontrib load powerline2
+
+#########
+# Extra #
+#########
+xontrib load onepath
+
+$AUTO_CD=True
+
+
+
+colorscript -r

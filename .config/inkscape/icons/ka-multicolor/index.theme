@@ -1,0 +1,13 @@
+[Icon Theme]
+Name=ka-multicolor
+Comment=next generation theme for inkscape
+Hidden=true
+Directories=symbolic/actions
+
+[symbolic/actions]
+MinSize=16
+Size=16
+MaxSize=512
+Context=Actions
+Type=Scalable
+
