@@ -2,6 +2,7 @@ from libqtile.config import Click, Drag, Key
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 import os.path
+from groups import groups
 
 
 mod = "mod4"
@@ -115,6 +116,12 @@ keys = [
 
     Key([], "XF86AudioStop", lazy.spawn("playerctl stop")),
 ]
+
+for group in groups:
+    keys.extend([
+        Key([mod], group.name, lazy.group[group.name].toscreen()),
+        Key([mod, "shift"], group.name, lazy.window.togroup(group.name, switch_group=True)),
+    ])
 
 mouse = [
     Drag([mod], "Button1", lazy.window.set_position_floating(), start=lazy.window.get_position()),
