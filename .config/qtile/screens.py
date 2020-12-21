@@ -3,7 +3,7 @@ from libqtile import widget, bar
 from keys import HOME, launcher, calendar
 from colors import colors
 from spotify import spotify_info, spotify_ctrl, spotify_prev, spotify_next
-from groups import group_names
+from groups import groups
 
 ICON_DIR = HOME + ".config/qtile/icons/"
 TELA_ICONS = "/usr/share/icons/Tela-blue-dark/"
@@ -47,12 +47,13 @@ widgets = [
         highlight_method="line",
         borderwidth=0,
         rounded=False,
+        disable_drag=True,
         inactive=colors["groups_inactive"],
         margin_y=3,
         margin_x=2,
         padding_x=8,
         fmt="<b>{}</b>",
-        visible_groups=group_names, # Fix bug of extra groups appearing from default config
+        visible_groups=[g.name for g in groups], # Fix bug of extra groups appearing from default config
     ),
     widget.TextBox(
         **separator_defaults,

@@ -31,13 +31,13 @@ keys = [
         desc="Move focus right in stack pane"),
 
      # Resizing Bindings
-    Key([mod, "shift"], "w", lazy.layout.grow_up(),
+    Key([mod, "shift"], "w", lazy.layout.grow(),
         desc="Grow Up"),
-    Key([mod, "shift"], "a", lazy.layout.grow_left(),
+    Key([mod, "shift"], "a", lazy.layout.flip(),
         desc="Grow Left"),
-    Key([mod, "shift"], "s", lazy.layout.grow_down(),
+    Key([mod, "shift"], "s", lazy.layout.shrink(),
         desc="Grow Down"),
-    Key([mod, "shift"], "d", lazy.layout.grow_down(),
+    Key([mod, "shift"], "d", lazy.layout.reset(),
         desc="Grow right"),
 
     # Move windows up or down in current stack
@@ -67,6 +67,7 @@ keys = [
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], 'f', lazy.window.toggle_floating()),
+    Key([mod, "shift"], 'f', lazy.window.toggle_fullscreen()),
     Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
     Key([mod], "x", lazy.spawn(powermenu), desc="Show Powermenu"),
     Key([mod], "e", lazy.spawn(file_manager), desc="Run File Manager"),
@@ -116,9 +117,7 @@ keys = [
 ]
 
 mouse = [
-    Drag([mod], "Button1", lazy.window.set_position_floating(),
-         start=lazy.window.get_position()),
-    Drag([mod], "Button3", lazy.window.set_size_floating(),
-         start=lazy.window.get_size()),
-    Click([mod], "Button2", lazy.window.bring_to_front())
+    Drag([mod], "Button1", lazy.window.set_position_floating(), start=lazy.window.get_position()),
+    Drag([mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()),
+    Click([mod], "Button2", lazy.window.focus(), lazy.window.bring_to_front())
 ]
