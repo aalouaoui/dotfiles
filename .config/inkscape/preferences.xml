@@ -1088,7 +1088,7 @@
        height="740"
        x="0"
        y="28"
-       fullscreen="0"
+       fullscreen="1"
        id="geometry"
        maximized="1" />
     <group
