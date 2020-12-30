@@ -7,10 +7,10 @@
     "telemetry.enableCrashReporter": false,
     "telemetry.enableTelemetry": false,
     "workbench.iconTheme": "material-icon-theme",
-    "terminal.integrated.shell.linux": "/usr/bin/xonsh",
+    "terminal.integrated.shell.linux": "/usr/bin/fish",
     "window.menuBarVisibility": "toggle",
     "prettier.arrowParens": "avoid",
-    "prettier.printWidth": 100,
+    "prettier.printWidth": 120,
     "prettier.trailingComma": "none",
     "workbench.startupEditor": "welcomePage",
     "workbench.activityBar.visible": true,
@@ -47,7 +47,6 @@
         "editor.defaultFormatter": "vscode.json-language-features"
     },
     "workbench.colorTheme": "Community Material Theme Ocean",
-    "editor.formatOnSave": true,
     "[json]": {
         "editor.defaultFormatter": "vscode.json-language-features"
     },
@@ -109,4 +108,6 @@
         }
     },
     "window.zoomLevel": 0,
+    "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
+    "vim.enableNeovim": true
 }
