@@ -127,8 +127,8 @@
          id="rect"
          style="fill:blue;"
          usecurrent="1"
-         width="1109.14"
-         height="620.571"
+         width="1366"
+         height="28"
          ry="0"
          rx="0" />
       <eventcontext
@@ -555,7 +555,7 @@
        page="0"
        x="0"
        y="0"
-       w="417"
+       w="466"
        h="387"
        visible="1"
        state="2"
@@ -577,7 +577,7 @@
        rotateCounterClockwise="1"
        x="0"
        y="0"
-       w="417"
+       w="466"
        h="387"
        visible="1"
        state="2"
@@ -619,8 +619,8 @@
     <group
        id="documentoptions"
        state="1"
-       x="217"
-       y="0"
+       x="174"
+       y="81"
        w="615"
        h="641"
        visible="0"
@@ -751,12 +751,19 @@
     <group
        id="colorpickerwindow" />
     <group
-       id="undo-history" />
+       id="undo-history"
+       x="0"
+       y="0"
+       w="466"
+       h="95"
+       visible="0"
+       state="2"
+       placement="1" />
     <group
        id="objects"
        x="0"
        y="0"
-       w="417"
+       w="466"
        h="387"
        visible="1"
        state="2"
@@ -765,7 +772,7 @@
        id="livepatheffect"
        x="0"
        y="0"
-       w="417"
+       w="466"
        h="387"
        visible="1"
        state="2"
@@ -1082,13 +1089,13 @@
      org.inkscape.print.wmf.textToPath="1" />
   <group
      id="desktop"
-     style="fill:none;-inkscape-font-specification:'Noto Sans Old Italic, ';font-family:'Noto Sans Old Italic';text-anchor:middle;text-align:center;paint-order:markers stroke fill;stroke-width:10;stroke:#d53818">
+     style="fill:#080808;-inkscape-font-specification:'Noto Sans Old Italic, ';font-family:'Noto Sans Old Italic';text-anchor:middle;text-align:center;paint-order:markers stroke fill;stroke-width:10">
     <group
        width="1366"
        height="740"
        x="0"
        y="28"
-       fullscreen="1"
+       fullscreen="0"
        id="geometry"
        maximized="1" />
     <group

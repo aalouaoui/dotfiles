@@ -107,7 +107,10 @@
             // "terminalCursor.foreground": "",
         }
     },
-    "window.zoomLevel": 0,
-    "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
-    "vim.enableNeovim": true
+    "[markdown]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[rust]": {
+        "editor.defaultFormatter": "rust-lang.rust"
+    },
 }

@@ -54,8 +54,8 @@ icons:
 
 # == Ignore Globs ==
 # A list of globs to ignore when listing.
-# ignore-globs:
-#   - .git
+ignore-globs:
+  - .git
 
 # == Indicators ==
 # Whether to add indicator characters to certain listed files.
@@ -103,7 +103,7 @@ no-symlink: false
 # == Total size ==
 # Whether to display the total size of directories.
 # Possible values: false, true
-total-size: true
+total-size: false
 
 # == Symlink arrow ==
 # Specifies how the symlink arrow display, chars in both ascii and utf8
