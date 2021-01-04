@@ -114,7 +114,17 @@
         "editor.defaultFormatter": "rust-lang.rust"
     },
     "cSpell.userWords": [
+        "Fira",
+        "TELA",
+        "alacritty",
         "libqtile",
-        "spotify"
+        "pavucontrol",
+        "qalculate",
+        "qtile",
+        "rofi",
+        "spotify",
+        "thunar",
+        "wmname",
+        "xkill"
     ],
 }

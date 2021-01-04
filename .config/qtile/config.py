@@ -2,7 +2,7 @@ from typing import List  # noqa: F401
 from libqtile import layout, widget, bar, hook
 from libqtile.config import Click, Drag, Key, Group, Match, Screen
 from libqtile.lazy import lazy
-from libqtile.utils import guess_terminal
+# from libqtile.utils import guess_terminal
 import subprocess
 import os.path
 # from libqtile.log_utils import logger # to write into ~/.local/share/qtile/qtile.log
@@ -10,14 +10,15 @@ import os.path
 # Custom Imports
 from scripts import Spotify
 
-
 ###############
 ### My Vars ###
 ###############
-spotify = Spotify()  # Create a class instance containing spotify funcs
+spotify = Spotify()  # Create a class instance containing spotify functions
 mod = "mod4"
+ctrl = "control"
+alt = "mod1"
+shift = "shift"
 HOME = os.path.expanduser("~/")
-terminal = guess_terminal()
 terminal = "alacritty"
 launcher = HOME+"rofi/720p/bin/launcher_colorful"
 powermenu = HOME+"rofi/720p/bin/powermenu"
@@ -28,7 +29,6 @@ calculator = "qalculate-gtk"
 meet_screenshot = HOME + "scripts/meet-screenshot.sh"
 # screenshot = HOME + "scripts/screenshot.sh"
 screenshot = "xfce4-screenshooter -r"
-calendar = "gnome-calendar"
 
 # For Widgets
 ICON_DIR = HOME + ".config/qtile/icons/"
@@ -40,63 +40,43 @@ right_sep = ""
 #################
 ### My Colors ###
 #################
-
-colorscheme = dict(
-    black="#080808",
-    grey="#50505f",
-    grey2="#79798f",
-    red="#B53F3F",
-    red_light="#FF5959",
-    green="#48B53F",
-    yellow="#B5B13F",
-    blue="#3F51B5",
-    blue_dark="#2D3A82",
-    blue_light="#4B61D9",
-    purple="#8A3FB5",
-    cyan="#3FB5A7",
-    silver="#cecece",
-    white="#ffffff",
-    white2="#dfdfdf",
-)
-
 colors = dict(
-    layout_border=colorscheme["blue"],
-    bg=colorscheme["black"],
-    rofi=colorscheme["white"],
+    layout_border="#3F51B5",
+    bg="#080808",
+    rofi="#ffffff",
 
-    groups_bg=colorscheme["blue"],
-    groups_active=colorscheme["white"],
-    groups_highlight=colorscheme["blue_dark"],
-    groups_highlight_color=colorscheme["white"],
-    groups_inactive=colorscheme["silver"],
+    groups_bg="#3F51B5",
+    groups_active="#ffffff",
+    groups_highlight="#2D3A82",
+    groups_highlight_color="#ffffff",
+    groups_inactive="#cecece",
 
-    tasklist_bg=colorscheme["black"],
+    tasklist_bg="#080808",
 
-    sep=colorscheme["white"],
-    player_bg=colorscheme["blue"],
-    sensor_bg=colorscheme["blue"],
-    sensor_alert=colorscheme["red_light"],
-    lang_bg=colorscheme["blue"],
-    battery_bg=colorscheme["blue"],
-    volume_bg=colorscheme["blue"],
+    sep="#ffffff",
+    player_bg="#3F51B5",
+    sensor_bg="#3F51B5",
+    sensor_alert="#FF5959",
+    lang_bg="#3F51B5",
+    battery_bg="#3F51B5",
+    volume_bg="#3F51B5",
 
-    clock_bg=colorscheme["blue"],
-    clock_fg=colorscheme["white"],
-    layout_icon_bg=colorscheme["white"],
+    clock_bg="#3F51B5",
+    clock_fg="#ffffff",
+    layout_icon_bg="#ffffff",
 )
 
 ###############
 ### Groups ####
 ###############
-
 groups = [
-    Group(name="1", label="WEB", matches=[
-          Match(wm_class=["chromium", "firefox"])]),
+    Group(name="1", label="WEB",
+          matches=[Match(wm_class=["chromium", "firefox"])]),
     Group(name="2", label="DEV"),
     Group(name="3", label="TERM", layout="monadtall"),
     Group(name="4", label="SYS"),
-    Group(name="5", label="MUS", matches=[
-          Match(wm_class=["spotify", "Spotify"])]),
+    Group(name="5", label="MUS",
+          matches=[Match(wm_class=["spotify", "Spotify"])]),
 ]
 
 ######################
@@ -104,115 +84,90 @@ groups = [
 ######################
 
 keys = [
-    # Switch between windows in current stack pane
-    Key([mod], "w", lazy.layout.up(),
-        desc="Move focus up in stack pane"),
-    Key([mod], "a", lazy.layout.left(),
-        desc="Move focus left in stack pane"),
-    Key([mod], "s", lazy.layout.down(),
-        desc="Move focus down in stack pane"),
-    Key([mod], "d", lazy.layout.down(),
-        desc="Move focus right in stack pane"),
+    # Window Controls
+    Key([mod], "w", lazy.layout.shuffle_up(), desc="Move Window Up"),
+    Key([mod], "a", lazy.layout.shuffle_up(), desc="Move Window Left"),
+    Key([mod], "s", lazy.layout.shuffle_down(), desc="Move Window Down"),
+    Key([mod], "d", lazy.layout.shuffle_down(), desc="Move Window Right"),
+    Key([alt], "Tab", lazy.layout.next(), desc="Next Window"),
+    Key([alt, shift], "Tab", lazy.layout.previous(), desc="Previous Window"),
+    Key([mod], "Tab", lazy.next_layout(), desc="Switch Layout"),
+    Key([mod], 'f', lazy.window.toggle_floating(), desc="Toggle Floating"),
+    Key([mod, shift], 'f', lazy.window.toggle_fullscreen(),
+        desc="Toggle Fullscreen"),
+    Key([mod, ctrl], 'f', lazy.window.bring_to_front(),
+        desc="Bring Window To Front"),
+    Key([mod], "q", lazy.window.kill(), desc="Quit Window"),
 
-    # Resizing Bindings
-    Key([mod, "shift"], "w", lazy.layout.grow(),
-        desc="Grow Up"),
-    Key([mod, "shift"], "a", lazy.layout.flip(),
-        desc="Grow Left"),
-    Key([mod, "shift"], "s", lazy.layout.shrink(),
-        desc="Grow Down"),
-    Key([mod, "shift"], "d", lazy.layout.reset(),
-        desc="Grow right"),
-
-    # Move windows up or down in current stack
-    Key([mod, "control"], "w", lazy.layout.shuffle_up(),
-        desc="Move window up in current stack "),
-    Key([mod, "control"], "a", lazy.layout.shuffle_up(),
-        desc="Move window left in current stack "),
-    Key([mod, "control"], "s", lazy.layout.shuffle_down(),
-        desc="Move window down in current stack "),
-    Key([mod, "control"], "d", lazy.layout.shuffle_down(),
-        desc="Move window right in current stack "),
-
-    # Switch window focus to other pane(s) of stack
-    Key(["mod1", "shift"], "Tab", lazy.layout.previous(),
-        desc="Switch window focus to other pane(s) of stack"),
-    Key(["mod1"], "Tab", lazy.layout.next(),
-        desc="Switch window focus to other pane(s) of stack"),
-
-    # Toggle between split and unsplit sides of stack.
-    # Split = all windows displayed
-    # Unsplit = 1 window displayed, like Max layout, but still with
-    # multiple stack panes
-    Key([mod, "shift"], "Return", lazy.layout.toggle_split(),
-        desc="Toggle between split and unsplit sides of stack"),
-    Key([mod], "t", lazy.spawn(terminal), desc="Launch terminal"),
-
-    # Toggle between different layouts as defined below
-    Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
-    Key([mod], 'f', lazy.window.toggle_floating()),
-    Key([mod, "shift"], 'f', lazy.window.toggle_fullscreen()),
-    Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
-    Key([mod], "x", lazy.spawn(powermenu), desc="Show Powermenu"),
+    # Launching Apps
+    Key([mod], "t", lazy.spawn(terminal), desc="Run terminal"),
+    Key([mod], "r", lazy.spawn(launcher), desc="Run Rofi"),
+    Key([mod], "x", lazy.spawn(powermenu), desc="Run Powermenu"),
     Key([mod], "e", lazy.spawn(file_manager), desc="Run File Manager"),
     Key([mod], "b", lazy.spawn(my_browser), desc="Run Browser"),
     Key([mod], "c", lazy.spawn(code_editor), desc="Run Code Editor"),
     Key([mod], "m", lazy.spawn(calculator), desc="Run Calculator"),
-    Key(["shift"], "Print", lazy.spawn(screenshot), desc="Full Screenshot"),
-    Key([], "Print", lazy.spawn(meet_screenshot), desc="Meet Screenshot"),
+    Key([shift], "Print", lazy.spawn(screenshot), desc="Take Full Screenshot"),
+    Key([], "Print", lazy.spawn(meet_screenshot), desc="Take Meet Screenshot"),
+    Key([ctrl], "Escape", lazy.spawn("xkill"), desc="Run XKill"),
 
-    Key([mod, "control"], "r", lazy.restart(), desc="Restart qtile"),
-    Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown qtile"),
-    Key(["mod1", "control"], "Delete", lazy.shutdown(), desc="Shutdown qtile"),
-    # Key([mod], "e", lazy.spawncmd(),
-    #     desc="Spawn a command using a prompt widget"),
-    Key([mod], "r", lazy.spawn(launcher), desc="Run Rofi"),
+    # Qtile Controls
+    Key([mod, ctrl], "r", lazy.restart(), desc="Restart Qtile"),
+    Key([mod, ctrl], "q", lazy.shutdown(), desc="Quit Qtile"),
+    Key([ctrl, alt], "Delete", lazy.shutdown(), desc="Quit Qtile"),
 
-    # Run XKill
-    Key(["control"], "Escape", lazy.spawn("xkill"), desc="Run Rofi"),
+    # Brightness Controls
+    Key([], "XF86MonBrightnessUp", lazy.spawn("xbacklight -inc 10"),
+        desc="Brightness+"),
+    Key([mod, ctrl], "Up", lazy.spawn("xbacklight -inc 10"), desc="Brightness+"),
+    Key([], "XF86MonBrightnessDown", lazy.spawn("xbacklight -dec 10"),
+        desc="Brightness-"),
+    Key([mod, ctrl], "Down", lazy.spawn("xbacklight -dec 10"),
+        desc="Brightness-"),
 
-    # INCREASE/DECREASE BRIGHTNESS
-    Key([], "XF86MonBrightnessUp", lazy.spawn("xbacklight -inc 10")),
-    Key([mod, "control"], "Up", lazy.spawn("xbacklight -inc 10")),
-    Key([], "XF86MonBrightnessDown", lazy.spawn("xbacklight -dec 10")),
-    Key([mod, "control"], "Down", lazy.spawn("xbacklight -dec 10")),
+    # Volume Controls
+    Key([], "XF86AudioMute", lazy.spawn("amixer -q set Master toggle"),
+        desc="Mute Volume"),
+    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -q set Master 5%-"),
+        desc="Volume-"),
+    Key([mod, ctrl], "Left", lazy.spawn("amixer -q set Master 5%-"),
+        desc="Volume-"),
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -q set Master 5%+"),
+        desc="Volume+"),
+    Key([mod, ctrl], "Right", lazy.spawn("amixer -q set Master 5%+"),
+        desc="Volume+"),
 
-
-    # INCREASE/DECREASE/MUTE VOLUME
-    Key([], "XF86AudioMute", lazy.spawn("amixer -q set Master toggle")),
-
-    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -q set Master 5%-")),
-    Key([mod, "control"], "Left", lazy.spawn("amixer -q set Master 5%-")),
-
-    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -q set Master 5%+")),
-    Key([mod, "control"], "Right", lazy.spawn("amixer -q set Master 5%+")),
-
-    # MULTIMEDIA KEYS
-    Key([], "XF86AudioPlay", lazy.spawn("playerctl play-pause")),
-    Key([mod, "shift"], "Down", lazy.spawn("playerctl play-pause")),
-
-    Key([], "XF86AudioNext", lazy.spawn("playerctl next")),
-    Key([mod, "shift"], "Right", lazy.spawn("playerctl next")),
-
-    Key([], "XF86AudioPrev", lazy.spawn("playerctl previous")),
-    Key([mod, "shift"], "Left", lazy.spawn("playerctl previous")),
-
-    Key([], "XF86AudioStop", lazy.spawn("playerctl stop")),
+    # Media Controls
+    Key([], "XF86AudioPlay", lazy.spawn("playerctl play-pause"),
+        desc="Media Play/Pause"),
+    Key([mod, shift], "Down", lazy.spawn("playerctl play-pause"),
+        desc="Media Play/Pause"),
+    Key([], "XF86AudioNext", lazy.spawn("playerctl next"), desc="Media Next"),
+    Key([mod, shift], "Right", lazy.spawn("playerctl next"), desc="Media Next"),
+    Key([], "XF86AudioPrev", lazy.spawn("playerctl previous"),
+        desc="Media Previous"),
+    Key([mod, shift], "Left", lazy.spawn("playerctl previous"),
+        desc="Media Previous"),
+    Key([], "XF86AudioStop", lazy.spawn("playerctl stop"), desc="Media Stop"),
 ]
 
 for group in groups:
     keys.extend([
-        Key([mod], group.name, lazy.group[group.name].toscreen()),
-        Key([mod, "shift"], group.name, lazy.window.togroup(
-            group.name, switch_group=True)),
+        Key([mod], group.name, lazy.group[group.name].toscreen(),
+            desc=f"Show Group {group.label}"),
+        Key([mod, shift], group.name,
+            lazy.window.togroup(group.name, switch_group=True),
+            desc=f"Send Window To Group {group.label}"),
     ])
+
 
 mouse = [
     Drag([mod], "Button1", lazy.window.set_position_floating(),
-         start=lazy.window.get_position()),
+         start=lazy.window.get_position(), desc="Drag Window"),
     Drag([mod], "Button3", lazy.window.set_size_floating(),
-         start=lazy.window.get_size()),
-    Click([mod], "Button2", lazy.window.focus(), lazy.window.bring_to_front())
+         start=lazy.window.get_size(), desc="Resize Window"),
+    Click([mod], "Button2", lazy.window.bring_to_front(),
+          desc="Bring Window to Front")
 ]
 
 ###############
@@ -225,8 +180,12 @@ layout_defaults = dict(
     grow_amount=3,
 )
 
-floating_layout_defaults = layout_defaults.copy()
-floating_layout_defaults["border_width"] = 0
+floating_layout_defaults = dict(
+    margin=2,
+    border_width=1,
+    border_focus=colors["layout_border"],
+    grow_amount=1,
+)
 
 layouts = [layout.Max(**layout_defaults), layout.MonadTall(**layout_defaults)]
 
@@ -262,15 +221,12 @@ separator_defaults = dict(
     fontsize=21,
 )
 
-
 widget_defaults = dict(
     font='Noto Sans',
     fontsize=12,
     padding=0,
     margin=0
 )
-
-extension_defaults = widget_defaults.copy()
 
 widgets = [
     widget.Image(
@@ -323,7 +279,6 @@ widgets = [
         markup_normal="",
 
     ),
-    # Center
     widget.Systray(
         padding=5,
     ),
@@ -394,17 +349,11 @@ widgets = [
         backlight_name="intel_backlight",
         brightness_file="brightness",
         max_brightness_file="max_brightness",
-        # fmt="{0} ",
         format='{percent:2.0%}',
         background=colors["battery_bg"],
         step=10,
-        # change_command='xbacklight -set {0}',
         change_command="xbacklight -set {0}",
         update_interval=0.2,
-        # mouse_callbacks={
-        # 'Button4': lambda qtile: qtile.cmd_spawn('xbacklight -inc 10'),
-        # 'Button5': lambda qtile: qtile.cmd_spawn('xbacklight -dec 10'),
-        # }
     ),
     widget.TextBox(
         **separator_defaults,
@@ -440,7 +389,6 @@ widgets = [
         format='%d %B | %H:%M',
         fmt="<span font_family='Fira Code Nerd Font' size='larger'> </span> {}",
         padding=4,
-        mouse_callbacks={'Button1': lambda qtile: qtile.cmd_spawn(calendar)},
     ),
     widget.TextBox(
         **separator_defaults,
@@ -463,11 +411,16 @@ screens = [
 #############
 ### Hooks ###
 #############
-
 @hook.subscribe.startup_once
 def autostart():
     subprocess.call([HOME+".config/qtile/autostart.sh"])
 
+# Float windows that has size hints
+@hook.subscribe.client_new
+def floating_size_hints(window):
+    hints = window.window.get_wm_normal_hints()
+    if hints and 0 < hints['max_width'] < 1000:
+        window.floating = True
 
 #################
 ### WM Config ###
