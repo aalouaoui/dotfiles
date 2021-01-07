@@ -1,5 +1,5 @@
 from typing import List  # noqa: F401
-from libqtile import layout, widget, bar, hook
+from libqtile import layout, widget, bar, hook, extension
 from libqtile.config import Click, Drag, Key, Group, Match, Screen
 from libqtile.lazy import lazy
 # from libqtile.utils import guess_terminal
@@ -8,18 +8,20 @@ import os.path
 # from libqtile.log_utils import logger # to write into ~/.local/share/qtile/qtile.log
 
 # Custom Imports
-from scripts import Spotify
+from spotify_controls import SpotifyControls
+from brightness_controls import BrightnessControl
+from volume_controls import VolumeControl
 
 ###############
 ### My Vars ###
 ###############
-spotify = Spotify()  # Create a class instance containing spotify functions
+# Create a class instance containing spotify functions
 mod = "mod4"
 ctrl = "control"
 alt = "mod1"
 shift = "shift"
 HOME = os.path.expanduser("~/")
-terminal = "alacritty"
+terminal = "kitty"
 launcher = HOME+"rofi/720p/bin/launcher_colorful"
 powermenu = HOME+"rofi/720p/bin/powermenu"
 file_manager = "thunar"
@@ -31,51 +33,57 @@ meet_screenshot = HOME + "scripts/meet-screenshot.sh"
 screenshot = "xfce4-screenshooter -r"
 
 # For Widgets
-ICON_DIR = HOME + ".config/qtile/icons/"
+# ICON_DIR = HOME + ".config/qtile/icons/"
 TELA_ICONS = "/usr/share/icons/Tela-blue-dark/"
-left_sep = ""
-sep = ""
-right_sep = ""
 
 #################
 ### My Colors ###
 #################
+
+
+def fake_border(color, base="#080808"):
+    return [color]*6+[base]*50
+
+
 colors = dict(
-    layout_border="#3F51B5",
-    bg="#080808",
-    rofi="#ffffff",
-
-    groups_bg="#3F51B5",
+    # New Ones
+    bg=fake_border("#232323"),
+    layout_border='#232323',
+    groups_hl=fake_border("#3F3FB5", "#0F0F0F"),
     groups_active="#ffffff",
-    groups_highlight="#2D3A82",
-    groups_highlight_color="#ffffff",
-    groups_inactive="#cecece",
-
-    tasklist_bg="#080808",
-
-    sep="#ffffff",
-    player_bg="#3F51B5",
-    sensor_bg="#3F51B5",
-    sensor_alert="#FF5959",
-    lang_bg="#3F51B5",
-    battery_bg="#3F51B5",
-    volume_bg="#3F51B5",
-
-    clock_bg="#3F51B5",
+    groups_inactive="#aaaaaa",
+    tabs_bg=fake_border("#3F8EB5", "#0F0F0F"),
+    spotify_bg=fake_border("#3FB53F"),
+    lang_bg=fake_border("#B53F8E"),
+    sensor_bg=fake_border("#B53F3F"),
+    sensor_alert="#B53F3F",
+    brightness_bg=fake_border("#8EB53F"),
+    volume_bg=fake_border("#8E3FB5"),
+    clock_bg=fake_border("#3FB58E"),
     clock_fg="#ffffff",
-    layout_icon_bg="#ffffff",
+    tray_bg="#080808",
 )
+
+
+def wrap_icon(icon, color):
+    pango = f"<span font_family='Fira Code Nerd Font' size='larger' foreground='{colors[color][0]}'>{icon} </span>" + "{}"
+    return pango
+
+spotify = SpotifyControls(color=colors["spotify_bg"][0])
+brightness = BrightnessControl(color=colors["brightness_bg"][0])
+volume = VolumeControl(color=colors["volume_bg"][0])
+
 
 ###############
 ### Groups ####
 ###############
 groups = [
-    Group(name="1", label="WEB",
+    Group(name="1", label="1",
           matches=[Match(wm_class=["chromium", "firefox"])]),
-    Group(name="2", label="DEV"),
-    Group(name="3", label="TERM", layout="monadtall"),
-    Group(name="4", label="SYS"),
-    Group(name="5", label="MUS",
+    Group(name="2", label="2"),
+    Group(name="3", label="3", layout="monadtall"),
+    Group(name="4", label="4"),
+    Group(name="5", label="5",
           matches=[Match(wm_class=["spotify", "Spotify"])]),
 ]
 
@@ -224,72 +232,41 @@ separator_defaults = dict(
 widget_defaults = dict(
     font='Noto Sans',
     fontsize=12,
-    padding=0,
-    margin=0
+    padding=6,
+    margin=10,
 )
 
 widgets = [
-    widget.Image(
-        background=colors["rofi"],
-        filename=f"{ICON_DIR}manjaro.svg",
-        mouse_callbacks={'Button1': lambda qtile: qtile.cmd_spawn(launcher)},
-    ),
-    widget.TextBox(
-        **separator_defaults,
-        text=right_sep,
-        background=colors["groups_bg"],
-        foreground=colors["rofi"]
-    ),
     widget.GroupBox(
-        background=colors["groups_bg"],
         active=colors["groups_active"],
-        block_highlight_text_color=colors["groups_highlight_color"],
-        highlight_color=colors["groups_highlight"],
+        highlight_color=colors["groups_hl"],
         highlight_method="line",
         borderwidth=0,
         rounded=False,
         disable_drag=True,
         inactive=colors["groups_inactive"],
         margin_y=3,
-        margin_x=2,
-        padding_x=8,
-        fmt="<b>{}</b>",
-    ),
-    widget.TextBox(
-        **separator_defaults,
-        text=right_sep,
-        foreground=colors["groups_bg"]
+        margin_x=0,
+        padding=8,
+        spacing=0,
     ),
     widget.TaskList(
-        background=colors["tasklist_bg"],
-        border=colors["tasklist_bg"],
-        borderwidth=2,
+        borderwidth=3,
+        margin_y=0,
+        margin_x=0,
+        padding=6,
         highlight_method="block",
-        # icon_size=20,
-        margin_y=3,
-        margin_x=3,
-        padding_x=3,
-        padding_y=3,
+        border=colors["tabs_bg"],
+        icon_size=0,  # Hide the icons
+        markup_floating="<u>{}</u>",
+        markup_minimized="<s>{}</s>",
+        markup_focused="{}",
+        markup_normal="<i>{}</i>",
+        # max_title_width=150,
+        title_width_method="uniform",
+        rounded=False,
         spacing=0,
-        # max_title_width=24,
-        markup_floating="",
-        markup_focused="",
-        markup_maximized="",
-        markup_minimized="",
-        markup_normal="",
 
-    ),
-    widget.Systray(
-        padding=5,
-    ),
-    widget.TextBox(
-        text="  ",
-    ),
-    widget.TextBox(
-        **separator_defaults,
-        text=left_sep,
-        background=colors["bg"],
-        foreground=colors["player_bg"],
     ),
     widget.GenPollText(
         func=spotify.get_info,
@@ -300,107 +277,53 @@ widgets = [
             'Button5': spotify.next,
         },
         update_interval=1,
-        background=colors["player_bg"],
-        padding=5,
-    ),
-    widget.TextBox(
-        **separator_defaults,
-        text=sep,
-        foreground=colors["sep"],
-        background=colors["player_bg"],
+        background=colors["spotify_bg"],
     ),
     widget.KeyboardLayout(
         background=colors["lang_bg"],
         configured_keyboards=["us", "ar"],
         display_map={"us": "EN", "ar": "AR"},
-        padding=5,
-        fmt="<span font_family='Fira Code Nerd Font' size='larger'>韛 </span> {}",
-    ),
-    widget.TextBox(
-        **separator_defaults,
-        text=sep,
-        foreground=colors["sep"],
-        background=colors["lang_bg"],
+        # fmt="<span font_family='Fira Code Nerd Font' size='larger'>韛 </span>{}",
+        fmt=wrap_icon("韛", "lang_bg")
     ),
     widget.ThermalSensor(
         background=colors["sensor_bg"],
-        padding=5,
-        fmt="<span font_family='Fira Code Nerd Font' size='larger'> </span>{}",
+        fmt=wrap_icon("", "sensor_bg"),
         tag_sensor="Package id 0",
         foreground_alert=colors["sensor_alert"],
-        threshold=70,
+        threshold=75,
     ),
-    widget.TextBox(
-        **separator_defaults,
-        text=sep,
-        foreground=colors["sep"],
-        background=colors["sensor_bg"],
-    ),
-    widget.BatteryIcon(
-        theme_path=TELA_ICONS+"24/panel/",
-        background=colors["battery_bg"],
+    widget.GenPollText(
+        func=brightness.get_info,
+        background=colors["brightness_bg"],
         mouse_callbacks={
-            'Button4': lambda qtile: qtile.cmd_spawn('xbacklight -inc 10'),
-            'Button5': lambda qtile: qtile.cmd_spawn('xbacklight -dec 10'),
+            'Button1': lambda qtile: qtile.cmd_spawn('xbacklight -d :0 -set 100'),
+            'Button4': lambda qtile: qtile.cmd_spawn('xbacklight -d :0 -inc 10'),
+            'Button5': lambda qtile: qtile.cmd_spawn('xbacklight -d :0 -dec 10'),
         },
-        update_interval=1
+        update_interval=1,
     ),
-    widget.Backlight(
-        backlight_name="intel_backlight",
-        brightness_file="brightness",
-        max_brightness_file="max_brightness",
-        format='{percent:2.0%}',
-        background=colors["battery_bg"],
-        step=10,
-        change_command="xbacklight -set {0}",
-        update_interval=0.2,
-    ),
-    widget.TextBox(
-        **separator_defaults,
-        text=sep,
-        foreground=colors["sep"],
-        background=colors["battery_bg"],
-    ),
-    widget.Volume(
-        step=5,
-        padding=0,
-        margin=0,
-        theme_path=TELA_ICONS+"24/panel/",
-        volume_app="pavucontrol",
+    widget.GenPollText(
+        func=volume.get_info,
         background=colors["volume_bg"],
-    ),
-    widget.Volume(
-        step=5,
-        padding=0,
-        margin=0,
-        volume_app="pavucontrol",
-        fmt=" {0} ",
-        background=colors["volume_bg"],
-    ),
-    widget.TextBox(
-        **separator_defaults,
-        text=sep,
-        foreground=colors["sep"],
-        background=colors["volume_bg"],
+        mouse_callbacks={
+            'Button1': lambda qtile: qtile.cmd_spawn('amixer -q set Master toggle'),
+            'Button3': lambda qtile: qtile.cmd_spawn('pavucontrol'),
+            'Button4': lambda qtile: qtile.cmd_spawn('amixer -q set Master 5%+'),
+            'Button5': lambda qtile: qtile.cmd_spawn('amixer -q set Master 5%-'),
+        },
+        update_interval=1,
     ),
     widget.Clock(
         background=colors["clock_bg"],
         foreground=colors["clock_fg"],
         format='%d %B | %H:%M',
-        fmt="<span font_family='Fira Code Nerd Font' size='larger'> </span> {}",
+        fmt=wrap_icon("", "clock_bg"),
         padding=4,
     ),
-    widget.TextBox(
-        **separator_defaults,
-        text=left_sep,
-        background=colors["clock_bg"],
-        foreground=colors["layout_icon_bg"],
-    ),
-    widget.CurrentLayoutIcon(
-        custom_icon_paths=[ICON_DIR],
-        padding=0,
-        scale=0.6,
-        background=colors["layout_icon_bg"],
+    widget.Systray(
+        padding=5,
+        background=colors["tray_bg"],
     ),
 ]
 
@@ -411,16 +334,21 @@ screens = [
 #############
 ### Hooks ###
 #############
+
+
 @hook.subscribe.startup_once
 def autostart():
     subprocess.call([HOME+".config/qtile/autostart.sh"])
 
 # Float windows that has size hints
+
+
 @hook.subscribe.client_new
 def floating_size_hints(window):
     hints = window.window.get_wm_normal_hints()
     if hints and 0 < hints['max_width'] < 1000:
         window.floating = True
+
 
 #################
 ### WM Config ###
