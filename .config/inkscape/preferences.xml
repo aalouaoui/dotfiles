@@ -127,8 +127,8 @@
          id="rect"
          style="fill:blue;"
          usecurrent="1"
-         width="1366"
-         height="28"
+         width="15.1535"
+         height="9.24186"
          ry="0"
          rx="0" />
       <eventcontext
@@ -179,7 +179,8 @@
          id="spiral"
          style="fill:none;stroke:black"
          expansion="1"
-         usecurrent="0" />
+         usecurrent="0"
+         revolution="3" />
     </group>
     <group
        id="freehand"
@@ -555,7 +556,7 @@
        page="0"
        x="0"
        y="0"
-       w="466"
+       w="415"
        h="387"
        visible="1"
        state="2"
@@ -577,7 +578,7 @@
        rotateCounterClockwise="1"
        x="0"
        y="0"
-       w="466"
+       w="415"
        h="387"
        visible="1"
        state="2"
@@ -619,10 +620,10 @@
     <group
        id="documentoptions"
        state="1"
-       x="174"
-       y="81"
-       w="615"
-       h="641"
+       x="200"
+       y="0"
+       w="603"
+       h="803"
        visible="0"
        placement="1" />
     <group
@@ -653,14 +654,14 @@
        path=""
        x="0"
        y="0"
-       w="417"
-       h="447"
+       w="415"
+       h="455"
        visible="0"
        state="2"
        placement="5">
       <group
          id="exportarea"
-         value="selection" />
+         value="drawing" />
       <group
          id="defaultxdpi" />
       <group
@@ -687,7 +688,7 @@
     <group
        id="import"
        enable_preview="1"
-       path="/home/khalid/Desktop/"
+       path="/home/khalid/.config/neofetch/"
        ask="1"
        ask_svg="1"
        link="embed"
@@ -738,9 +739,9 @@
     <group
        id="trace"
        state="1"
-       x="284"
-       y="234"
-       w="577"
+       x="221"
+       y="178"
+       w="565"
        h="424"
        visible="0"
        placement="1" />
@@ -763,7 +764,7 @@
        id="objects"
        x="0"
        y="0"
-       w="466"
+       w="415"
        h="387"
        visible="1"
        state="2"
@@ -772,7 +773,7 @@
        id="livepatheffect"
        x="0"
        y="0"
-       w="466"
+       w="415"
        h="387"
        visible="1"
        state="2"
@@ -1086,10 +1087,11 @@
      org.inkscape.print.wmf.FixPPTDashLine="0"
      org.inkscape.print.wmf.FixPPTGrad2Polys="0"
      org.inkscape.print.wmf.FixPPTPatternAsHatch="0"
-     org.inkscape.print.wmf.textToPath="1" />
+     org.inkscape.print.wmf.textToPath="1"
+     org.inkscape.input.gdkpixbuf.jpg.scale="optimizeQuality" />
   <group
      id="desktop"
-     style="fill:#080808;-inkscape-font-specification:'Noto Sans Old Italic, ';font-family:'Noto Sans Old Italic';text-anchor:middle;text-align:center;paint-order:markers stroke fill;stroke-width:10">
+     style="fill:#3f51b5;-inkscape-font-specification:'Noto Sans Old Italic, ';font-family:'Noto Sans Old Italic';text-anchor:middle;text-align:center;paint-order:markers stroke fill;stroke-width:10">
     <group
        width="1366"
        height="740"
@@ -1197,7 +1199,7 @@
   <group
      id="theme"
      defaultTheme="Plata-Noir-Compact"
-     defaultIconTheme="Tela-blue"
+     defaultIconTheme="Flat-Remix-Blue"
      gtkTheme="Plata-Noir-Compact"
      iconTheme="ka-multicolor"
      menuIcons_canvas="1"
