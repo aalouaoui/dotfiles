@@ -27,6 +27,8 @@ powermenu = HOME+"rofi/720p/bin/powermenu"
 file_manager = "thunar"
 my_browser = "chromium --password-store=gnome"
 code_editor = "code"
+editor = "kitty nvim"
+sys_mon = "kitty htop"
 calculator = "qalculate-gtk"
 meet_screenshot = HOME + "scripts/meet-screenshot.sh"
 # screenshot = HOME + "scripts/screenshot.sh"
@@ -97,6 +99,12 @@ keys = [
     Key([mod], "a", lazy.layout.shuffle_up(), desc="Move Window Left"),
     Key([mod], "s", lazy.layout.shuffle_down(), desc="Move Window Down"),
     Key([mod], "d", lazy.layout.shuffle_down(), desc="Move Window Right"),
+
+    Key([mod, shift], "w", lazy.layout.grow(), desc="Grow Window"),
+    Key([mod, shift], "s", lazy.layout.shrink(), desc="Shrink Window"),
+    Key([mod, shift], "d", lazy.layout.reset(), desc="Reset Layout"),
+    Key([mod], "space", lazy.layout.maximize(), desc="Maximize Window"),
+
     Key([alt], "Tab", lazy.layout.next(), desc="Next Window"),
     Key([alt, shift], "Tab", lazy.layout.previous(), desc="Previous Window"),
     Key([mod], "Tab", lazy.next_layout(), desc="Switch Layout"),
@@ -115,13 +123,15 @@ keys = [
     Key([mod], "b", lazy.spawn(my_browser), desc="Run Browser"),
     Key([mod], "c", lazy.spawn(code_editor), desc="Run Code Editor"),
     Key([mod], "m", lazy.spawn(calculator), desc="Run Calculator"),
+    Key([mod], "n", lazy.spawn(editor), desc="Run Editor"),
+    Key([mod], "Escape", lazy.spawn(sys_mon), desc="Run System Monitor"),
     Key([shift], "Print", lazy.spawn(screenshot), desc="Take Full Screenshot"),
     Key([], "Print", lazy.spawn(meet_screenshot), desc="Take Meet Screenshot"),
     Key([ctrl], "Escape", lazy.spawn("xkill"), desc="Run XKill"),
 
     # Qtile Controls
     Key([mod, ctrl], "r", lazy.restart(), desc="Restart Qtile"),
-    Key([mod, ctrl], "q", lazy.shutdown(), desc="Quit Qtile"),
+    # Key([mod, ctrl], "q", lazy.shutdown(), desc="Quit Qtile"),
     Key([ctrl, alt], "Delete", lazy.shutdown(), desc="Quit Qtile"),
 
     # Brightness Controls
@@ -195,7 +205,7 @@ floating_layout_defaults = dict(
     grow_amount=1,
 )
 
-layouts = [layout.Max(**layout_defaults), layout.MonadTall(**layout_defaults)]
+layouts = [layout.Max(**layout_defaults), layout.MonadTall(**layout_defaults), layout.MonadWide(**layout_defaults)]
 
 floating_layout = layout.Floating(float_rules=[
     # Run the utility of `xprop` to see the wm class and name of an X client.

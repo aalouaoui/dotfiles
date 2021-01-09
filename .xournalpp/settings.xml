@@ -5,7 +5,7 @@
   <property name="zoomGesturesEnabled" value="true"/>
   <property name="selectedToolbar" value="Portrait"/>
   <property name="lastSavePath" value="/home/khalid/Desktop"/>
-  <property name="lastOpenPath" value="/home/khalid/.xournalpp/autosave"/>
+  <property name="lastOpenPath" value="/mnt/mydata/EST-LP-MECA/RDM/Chapitre6-flexion"/>
   <property name="lastImagePath" value=""/>
   <property name="zoomStep" value="10.00000000"/>
   <property name="zoomStepScroll" value="2.00000000"/>
@@ -40,7 +40,7 @@
   <property name="autoloadPdfXoj" value="true"/>
   <property name="defaultSaveName" value="%F-Note-%H-%M"/>
   <property name="autosaveEnabled" value="true"/>
-  <property name="autosaveTimeout" value="3"/>
+  <property name="autosaveTimeout" value="1"/>
   <property name="addHorizontalSpace" value="false"/>
   <property name="addHorizontalSpaceAmount" value="150"/>
   <property name="addVerticalSpace" value="false"/>
@@ -58,8 +58,8 @@
   <!--The count of rendered PDF pages which will be cached.-->
   <!--Config for new pages-->
   <property name="pdfPageCacheSize" value="10"/>
-  <property name="pageTemplate" value="xoj/template&#10;copyLastPageSettings=true&#10;size=595.275591x841.889764&#10;backgroundType=lined&#10;backgroundColor=#ffffff&#10;"/>
-  <property name="sizeUnit" value=""/>
+  <property name="pageTemplate" value="xoj/template&#10;copyLastPageSize=false&#10;copyLastPageSettings=true&#10;size=595.275591x841.889764&#10;backgroundType=graph&#10;backgroundColor=#ffffffff&#10;"/>
+  <property name="sizeUnit" value="cm"/>
   <property name="audioFolder" value=""/>
   <property name="audioInputDevice" value="-1"/>
   <property name="audioOutputDevice" value="-1"/>
@@ -76,7 +76,7 @@
   <property name="experimentalInputSystemEnabled" value="false"/>
   <property name="inputSystemTPCButton" value="false"/>
   <property name="inputSystemDrawOutsideWindow" value="true"/>
-  <property name="font" font="FiraCode Nerd Font Mono" size="12.00000000"/>
+  <property name="font" font="FiraCode Nerd Font Mono" size="10.00000000"/>
   <data name="buttonConfig">
     <data name="default">
       <attribute name="color" type="hex" value="ff1faced"/>
@@ -128,7 +128,7 @@
     </data>
   </data>
   <data name="tools">
-    <attribute name="current" type="string" value="text"/>
+    <attribute name="current" type="string" value="hilighter"/>
     <data name="drawArrow">
       <attribute name="drawingType" type="string" value="default"/>
     </data>
@@ -150,7 +150,7 @@
       <attribute name="drawingType" type="string" value="default"/>
     </data>
     <data name="hilighter">
-      <attribute name="color" type="hex" value="0f8f4d"/>
+      <attribute name="color" type="hex" value="ff0000"/>
       <attribute name="drawingType" type="string" value="strokeRecognizer"/>
       <attribute name="fill" type="int" value="0"/>
       <attribute name="fillAlpha" type="int" value="128"/>
@@ -160,7 +160,7 @@
       <attribute name="drawingType" type="string" value="default"/>
     </data>
     <data name="pen">
-      <attribute name="color" type="hex" value="ff8000"/>
+      <attribute name="color" type="hex" value="008000"/>
       <attribute name="drawingType" type="string" value="strokeRecognizer"/>
       <attribute name="fill" type="int" value="0"/>
       <attribute name="fillAlpha" type="int" value="128"/>

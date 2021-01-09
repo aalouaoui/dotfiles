@@ -52,7 +52,6 @@ Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
 Plug 'tomasiser/vim-code-dark'
 
 " I added
-Plug 'preservim/nerdcommenter'
 Plug 'ervandew/supertab'
 
 
@@ -596,4 +595,9 @@ else
   let g:airline_symbols.branch = ''
   let g:airline_symbols.readonly = ''
   let g:airline_symbols.linenr = ''
+endif
+
+" Custom Config
+if &shell =~# 'fish$'
+    set shell=sh
 endif
