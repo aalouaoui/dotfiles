@@ -53,7 +53,9 @@ Plug 'tomasiser/vim-code-dark'
 
 " I added
 Plug 'ervandew/supertab'
-
+Plug 'lambdalisue/suda.vim'
+let g:suda_smart_edit = 1
+" End of what I added
 
 if isdirectory('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'

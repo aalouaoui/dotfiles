@@ -16,3 +16,5 @@ abbr --add --global colorscript "/opt/shell-color-scripts/colorscript.sh"
 abbr --add --global xephyr "Xephyr -br -ac -noreset -screen 1360x700 :1 &"
 abbr --add --global ctl "sudo systemctl"
 abbr --add --global n "nvim"
+abbr --add --global icat "kitty +kitten icat --align=left"
+
