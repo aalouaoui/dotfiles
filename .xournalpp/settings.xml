@@ -128,7 +128,7 @@
     </data>
   </data>
   <data name="tools">
-    <attribute name="current" type="string" value="hilighter"/>
+    <attribute name="current" type="string" value="pen"/>
     <data name="drawArrow">
       <attribute name="drawingType" type="string" value="default"/>
     </data>
@@ -150,21 +150,21 @@
       <attribute name="drawingType" type="string" value="default"/>
     </data>
     <data name="hilighter">
-      <attribute name="color" type="hex" value="ff0000"/>
+      <attribute name="color" type="hex" value="ffff00"/>
       <attribute name="drawingType" type="string" value="strokeRecognizer"/>
       <attribute name="fill" type="int" value="0"/>
       <attribute name="fillAlpha" type="int" value="128"/>
-      <attribute name="size" type="string" value="MEDIUM"/>
+      <attribute name="size" type="string" value="BIG"/>
     </data>
     <data name="image">
       <attribute name="drawingType" type="string" value="default"/>
     </data>
     <data name="pen">
-      <attribute name="color" type="hex" value="008000"/>
+      <attribute name="color" type="hex" value="000000"/>
       <attribute name="drawingType" type="string" value="strokeRecognizer"/>
       <attribute name="fill" type="int" value="0"/>
       <attribute name="fillAlpha" type="int" value="128"/>
-      <attribute name="size" type="string" value="THIN"/>
+      <attribute name="size" type="string" value="BIG"/>
       <attribute name="style" type="string" value="plain"/>
     </data>
     <data name="playObject">

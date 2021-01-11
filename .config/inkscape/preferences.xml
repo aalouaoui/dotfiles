@@ -127,8 +127,8 @@
          id="rect"
          style="fill:blue;"
          usecurrent="1"
-         width="15.1535"
-         height="9.24186"
+         width="7.26173"
+         height="107"
          ry="0"
          rx="0" />
       <eventcontext
@@ -164,11 +164,11 @@
       <eventcontext
          id="arc"
          style="fill:red;"
-         end="0"
+         end="180"
          start="0"
          usecurrent="1"
-         rx="100"
-         ry="100"
+         rx="11.5915"
+         ry="11.5915"
          arc_type="0" />
       <eventcontext
          id="star"
@@ -553,11 +553,11 @@
        id="toolbox" />
     <group
        id="fillstroke"
-       page="0"
+       page="2"
        x="0"
        y="0"
        w="415"
-       h="387"
+       h="455"
        visible="1"
        state="2"
        placement="5" />
@@ -579,7 +579,7 @@
        x="0"
        y="0"
        w="415"
-       h="387"
+       h="455"
        visible="1"
        state="2"
        placement="5" />
@@ -620,7 +620,7 @@
     <group
        id="documentoptions"
        state="1"
-       x="200"
+       x="24"
        y="0"
        w="603"
        h="803"
@@ -656,7 +656,7 @@
        y="0"
        w="415"
        h="455"
-       visible="0"
+       visible="1"
        state="2"
        placement="5">
       <group
@@ -673,7 +673,7 @@
        default="org.inkscape.output.svg.inkscape"
        append_extension="1"
        enable_preview="1"
-       path="/mnt/mydata/EST-LP-MECA/Dessin"
+       path="/mnt/mydata/EST-LP-MECA/Fabrication"
        use_current_dir="1" />
     <group
        id="save_copy"
@@ -765,7 +765,7 @@
        x="0"
        y="0"
        w="415"
-       h="387"
+       h="455"
        visible="1"
        state="2"
        placement="5" />
@@ -774,7 +774,7 @@
        x="0"
        y="0"
        w="415"
-       h="387"
+       h="455"
        visible="1"
        state="2"
        placement="5"
@@ -1091,7 +1091,7 @@
      org.inkscape.input.gdkpixbuf.jpg.scale="optimizeQuality" />
   <group
      id="desktop"
-     style="fill:#3f51b5;-inkscape-font-specification:'Noto Sans Old Italic, ';font-family:'Noto Sans Old Italic';text-anchor:middle;text-align:center;paint-order:markers stroke fill;stroke-width:10">
+     style="fill:#000000;-inkscape-font-specification:'Noto Sans Old Italic, ';font-family:'Noto Sans Old Italic';text-anchor:middle;text-align:center;paint-order:markers stroke fill">
     <group
        width="1366"
        height="740"

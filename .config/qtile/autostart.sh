@@ -5,7 +5,6 @@ thunar --daemon &
 picom &
 dunst &
 xfce4-clipman &
-xclip &
 udiskie -ant & # Automount Removable media
 nm-applet &
 # blueman-applet & # Bluetooth
