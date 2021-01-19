@@ -31,6 +31,7 @@ editor = "kitty nvim"
 sys_mon = "kitty htop"
 calculator = "qalculate-gtk"
 meet_screenshot = HOME + "scripts/meet-screenshot.sh"
+ent_screenshot = HOME + "scripts/ent-screenshot.sh"
 # screenshot = HOME + "scripts/screenshot.sh"
 screenshot = "xfce4-screenshooter -r"
 
@@ -126,6 +127,7 @@ keys = [
     Key([mod], "n", lazy.spawn(editor), desc="Run Editor"),
     Key([mod], "Escape", lazy.spawn(sys_mon), desc="Run System Monitor"),
     Key([shift], "Print", lazy.spawn(screenshot), desc="Take Full Screenshot"),
+    Key([ctrl], "Print", lazy.spawn(ent_screenshot), desc="Take ENT Screenshot"),
     Key([], "Print", lazy.spawn(meet_screenshot), desc="Take Meet Screenshot"),
     Key([ctrl], "Escape", lazy.spawn("xkill"), desc="Run XKill"),
 
@@ -272,7 +274,7 @@ widgets = [
         markup_minimized="<s>{}</s>",
         markup_focused="{}",
         markup_normal="<i>{}</i>",
-        # max_title_width=150,
+        max_title_width=200,
         title_width_method="uniform",
         rounded=False,
         spacing=0,
@@ -338,7 +340,9 @@ widgets = [
 ]
 
 screens = [
-    Screen(top=bar.Bar(widgets, 28, background=colors["bg"]))
+    Screen(
+        top=bar.Bar(widgets, 28, margin=[0, 0, 0, 0], background=colors["bg"])
+    )
 ]
 
 #############
