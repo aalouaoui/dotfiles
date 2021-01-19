@@ -1,5 +1,5 @@
 from typing import List  # noqa: F401
-from libqtile import layout, widget, bar, hook, extension
+from libqtile import layout, widget, bar, hook  # , extension
 from libqtile.config import Click, Drag, Key, Group, Match, Screen
 from libqtile.lazy import lazy
 # from libqtile.utils import guess_terminal
@@ -32,7 +32,6 @@ sys_mon = "kitty htop"
 calculator = "qalculate-gtk"
 meet_screenshot = HOME + "scripts/meet-screenshot.sh"
 ent_screenshot = HOME + "scripts/ent-screenshot.sh"
-# screenshot = HOME + "scripts/screenshot.sh"
 screenshot = "xfce4-screenshooter -r"
 
 # For Widgets
@@ -72,6 +71,7 @@ def wrap_icon(icon, color):
     pango = f"<span font_family='Fira Code Nerd Font' size='larger' foreground='{colors[color][0]}'>{icon} </span>" + "{}"
     return pango
 
+
 spotify = SpotifyControls(color=colors["spotify_bg"][0])
 brightness = BrightnessControl(color=colors["brightness_bg"][0])
 volume = VolumeControl(color=colors["volume_bg"][0])
@@ -81,12 +81,12 @@ volume = VolumeControl(color=colors["volume_bg"][0])
 ### Groups ####
 ###############
 groups = [
-    Group(name="1", label="1",
+    Group(name="1", label="ⅼ",
           matches=[Match(wm_class=["chromium", "firefox"])]),
-    Group(name="2", label="2"),
-    Group(name="3", label="3", layout="monadtall"),
-    Group(name="4", label="4"),
-    Group(name="5", label="5",
+    Group(name="2", label="Ⅱ"),
+    Group(name="3", label="Ⅲ", layout="monadtall"),
+    Group(name="4", label="Ⅳ"),
+    Group(name="5", label="Ⅴ",
           matches=[Match(wm_class=["spotify", "Spotify"])]),
 ]
 
@@ -207,7 +207,8 @@ floating_layout_defaults = dict(
     grow_amount=1,
 )
 
-layouts = [layout.Max(**layout_defaults), layout.MonadTall(**layout_defaults), layout.MonadWide(**layout_defaults)]
+layouts = [layout.Max(**layout_defaults), layout.MonadTall(**
+                                                           layout_defaults), layout.MonadWide(**layout_defaults)]
 
 floating_layout = layout.Floating(float_rules=[
     # Run the utility of `xprop` to see the wm class and name of an X client.
@@ -274,7 +275,7 @@ widgets = [
         markup_minimized="<s>{}</s>",
         markup_focused="{}",
         markup_normal="<i>{}</i>",
-        max_title_width=200,
+        max_title_width=245,
         title_width_method="uniform",
         rounded=False,
         spacing=0,
@@ -369,9 +370,9 @@ def floating_size_hints(window):
 #################
 dgroups_key_binder = None
 dgroups_app_rules = []
-follow_mouse_focus = False
+follow_mouse_focus = True
 bring_front_click = False
 cursor_warp = False
 auto_fullscreen = True
 focus_on_window_activation = "focus"
-wmname = "LG3D"
+wmname = "qtile"
