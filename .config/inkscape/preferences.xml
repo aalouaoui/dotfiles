@@ -127,8 +127,8 @@
          id="rect"
          style="fill:blue;"
          usecurrent="1"
-         width="4.19916"
-         height="16.4686"
+         width="4.0433"
+         height="2.88814"
          ry="0"
          rx="0" />
       <eventcontext
@@ -553,7 +553,7 @@
        id="toolbox" />
     <group
        id="fillstroke"
-       page="2"
+       page="0"
        x="0"
        y="0"
        w="415"
@@ -661,7 +661,7 @@
        placement="5">
       <group
          id="exportarea"
-         value="selection" />
+         value="drawing" />
       <group
          id="defaultxdpi" />
       <group
@@ -1092,7 +1092,7 @@
      org.inkscape.input.gdkpixbuf.png.link="link" />
   <group
      id="desktop"
-     style="fill:none;-inkscape-font-specification:'Noto Sans Old Italic, ';font-family:'Noto Sans Old Italic';text-anchor:middle;text-align:center;paint-order:markers stroke fill;stroke:#484848">
+     style="fill:#3db142;-inkscape-font-specification:'Noto Sans Old Italic, ';font-family:'Noto Sans Old Italic';text-anchor:middle;text-align:center;paint-order:markers stroke fill;fill-opacity:0.5194028">
     <group
        width="1366"
        height="740"

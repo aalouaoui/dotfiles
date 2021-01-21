@@ -131,4 +131,8 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "prettier.jsxBracketSameLine": true,
+    "luahelper.show.costTime": true,
+    "cSpell.enableFiletypes": [
+        "lua"
+    ],
 }

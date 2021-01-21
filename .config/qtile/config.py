@@ -50,13 +50,12 @@ def fake_border(color, base="#080808"):
 colors = dict(
     layout_border='#121212',
     bg="#121212",
-
     groups_hl="#D32F2F",
     groups_hl_color="#121212",
     groups_active="#ffffff",
     groups_inactive="#aaaaaa",
+    tabs_bg=fake_border("#80cbc4", "#0F0F0F"),
 
-    tabs_bg=fake_border("#b39ddb", "#0F0F0F"),
     spotify_bg=fake_border("#3FB53F"),
     lang_bg=fake_border("#B53F8E"),
     sensor_bg=fake_border("#B53F3F"),
@@ -253,9 +252,7 @@ widget_defaults = dict(
     padding=6,
     margin=10,
 )
-
-widgets = [
-    widget.GroupBox(
+group_box_defaults = dict(
         active=colors["groups_active"],
         highlight_color=colors["groups_hl"],
         block_highlight_text_color=colors["groups_hl_color"],
@@ -267,8 +264,15 @@ widgets = [
         margin_y=3,
         margin_x=0,
         padding=8,
-        spacing=0,
-    ),
+        spacing=0
+)
+
+widgets = [
+    widget.GroupBox(**group_box_defaults, visible_groups=["1"], padding_x=12),
+    widget.GroupBox(**group_box_defaults, visible_groups=["2"], padding_x=11),
+    widget.GroupBox(**group_box_defaults, visible_groups=["3"], padding_x=10),
+    widget.GroupBox(**group_box_defaults, visible_groups=["4"], padding_x=9),
+    widget.GroupBox(**group_box_defaults, visible_groups=["5"], padding_x=10),
     widget.TaskList(
         borderwidth=3,
         margin_y=0,
