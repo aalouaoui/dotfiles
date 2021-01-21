@@ -50,7 +50,12 @@ def fake_border(color, base="#080808"):
 colors = dict(
     layout_border='#121212',
     bg="#121212",
-    groups_hl="#D32F2F",
+
+    groups_hl="#303f9f",
+    groups_hl2="#7b1fa2",
+    groups_hl3="#D32F2F",
+    groups_hl4="#5d4037",
+    groups_hl5="#388e3c",
     groups_hl_color="#121212",
     groups_active="#ffffff",
     groups_inactive="#aaaaaa",
@@ -254,7 +259,6 @@ widget_defaults = dict(
 )
 group_box_defaults = dict(
         active=colors["groups_active"],
-        highlight_color=colors["groups_hl"],
         block_highlight_text_color=colors["groups_hl_color"],
         highlight_method="line",
         borderwidth=0,
@@ -268,11 +272,11 @@ group_box_defaults = dict(
 )
 
 widgets = [
-    widget.GroupBox(**group_box_defaults, visible_groups=["1"], padding_x=12),
-    widget.GroupBox(**group_box_defaults, visible_groups=["2"], padding_x=11),
-    widget.GroupBox(**group_box_defaults, visible_groups=["3"], padding_x=10),
-    widget.GroupBox(**group_box_defaults, visible_groups=["4"], padding_x=9),
-    widget.GroupBox(**group_box_defaults, visible_groups=["5"], padding_x=10),
+    widget.GroupBox(**group_box_defaults, visible_groups=["1"], padding_x=12, highlight_color=colors["groups_hl"]),
+    widget.GroupBox(**group_box_defaults, visible_groups=["2"], padding_x=11, highlight_color=colors["groups_hl2"]),
+    widget.GroupBox(**group_box_defaults, visible_groups=["3"], padding_x=10, highlight_color=colors["groups_hl3"]),
+    widget.GroupBox(**group_box_defaults, visible_groups=["4"], padding_x=9, highlight_color=colors["groups_hl4"]),
+    widget.GroupBox(**group_box_defaults, visible_groups=["5"], padding_x=10, highlight_color=colors["groups_hl5"]),
     widget.TaskList(
         borderwidth=3,
         margin_y=0,
