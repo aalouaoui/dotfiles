@@ -55,6 +55,7 @@ Plug 'tomasiser/vim-code-dark'
 Plug 'ervandew/supertab'
 Plug 'lambdalisue/suda.vim'
 let g:suda_smart_edit = 1
+Plug 'ap/vim-css-color'
 " End of what I added
 
 if isdirectory('/usr/local/opt/fzf')

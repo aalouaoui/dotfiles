@@ -127,8 +127,8 @@
          id="rect"
          style="fill:blue;"
          usecurrent="1"
-         width="7.26173"
-         height="107"
+         width="4.19916"
+         height="16.4686"
          ry="0"
          rx="0" />
       <eventcontext
@@ -661,7 +661,7 @@
        placement="5">
       <group
          id="exportarea"
-         value="drawing" />
+         value="selection" />
       <group
          id="defaultxdpi" />
       <group
@@ -684,14 +684,14 @@
     <group
        id="open"
        enable_preview="1"
-       path="/home/khalid/.config/qtile/icons/" />
+       path="/mnt/mydata/EST-LP-MECA/Etude-Mecanique/3-liaisons-encastrement/liaison-pdf-images/" />
     <group
        id="import"
        enable_preview="1"
        path="/home/khalid/.config/neofetch/"
        ask="1"
        ask_svg="1"
-       link="embed"
+       link="link"
        scale="auto"
        import_mode_svg="include"
        forcexdpi="0" />
@@ -739,8 +739,8 @@
     <group
        id="trace"
        state="1"
-       x="221"
-       y="178"
+       x="358"
+       y="30"
        w="565"
        h="424"
        visible="0"
@@ -1088,10 +1088,11 @@
      org.inkscape.print.wmf.FixPPTGrad2Polys="0"
      org.inkscape.print.wmf.FixPPTPatternAsHatch="0"
      org.inkscape.print.wmf.textToPath="1"
-     org.inkscape.input.gdkpixbuf.jpg.scale="optimizeQuality" />
+     org.inkscape.input.gdkpixbuf.jpg.scale="optimizeQuality"
+     org.inkscape.input.gdkpixbuf.png.link="link" />
   <group
      id="desktop"
-     style="fill:#000000;-inkscape-font-specification:'Noto Sans Old Italic, ';font-family:'Noto Sans Old Italic';text-anchor:middle;text-align:center;paint-order:markers stroke fill">
+     style="fill:none;-inkscape-font-specification:'Noto Sans Old Italic, ';font-family:'Noto Sans Old Italic';text-anchor:middle;text-align:center;paint-order:markers stroke fill;stroke:#484848">
     <group
        width="1366"
        height="740"
@@ -1198,8 +1199,8 @@
      language="" />
   <group
      id="theme"
-     defaultTheme="Plata-Noir-Compact"
-     defaultIconTheme="Flat-Remix-Blue"
+     defaultTheme="Material-Black-Blueberry-3.36"
+     defaultIconTheme="Papirus-Dark"
      gtkTheme="Plata-Noir-Compact"
      iconTheme="ka-multicolor"
      menuIcons_canvas="1"

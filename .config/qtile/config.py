@@ -48,13 +48,15 @@ def fake_border(color, base="#080808"):
 
 
 colors = dict(
-    # New Ones
-    bg=fake_border("#232323"),
-    layout_border='#232323',
-    groups_hl=fake_border("#3F3FB5", "#0F0F0F"),
+    layout_border='#121212',
+    bg="#121212",
+
+    groups_hl="#D32F2F",
+    groups_hl_color="#121212",
     groups_active="#ffffff",
     groups_inactive="#aaaaaa",
-    tabs_bg=fake_border("#3F8EB5", "#0F0F0F"),
+
+    tabs_bg=fake_border("#b39ddb", "#0F0F0F"),
     spotify_bg=fake_border("#3FB53F"),
     lang_bg=fake_border("#B53F8E"),
     sensor_bg=fake_border("#B53F3F"),
@@ -207,8 +209,11 @@ floating_layout_defaults = dict(
     grow_amount=1,
 )
 
-layouts = [layout.Max(**layout_defaults), layout.MonadTall(**
-                                                           layout_defaults), layout.MonadWide(**layout_defaults)]
+layouts = [
+    layout.Max(**layout_defaults),
+    layout.MonadTall(**layout_defaults),
+    layout.MonadWide(**layout_defaults)
+]
 
 floating_layout = layout.Floating(float_rules=[
     # Run the utility of `xprop` to see the wm class and name of an X client.
@@ -253,6 +258,7 @@ widgets = [
     widget.GroupBox(
         active=colors["groups_active"],
         highlight_color=colors["groups_hl"],
+        block_highlight_text_color=colors["groups_hl_color"],
         highlight_method="line",
         borderwidth=0,
         rounded=False,

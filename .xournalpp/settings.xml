@@ -5,8 +5,8 @@
   <property name="zoomGesturesEnabled" value="true"/>
   <property name="selectedToolbar" value="Portrait"/>
   <property name="lastSavePath" value="/home/khalid/Desktop"/>
-  <property name="lastOpenPath" value="/mnt/mydata/EST-LP-MECA/RDM/Chapitre6-flexion"/>
-  <property name="lastImagePath" value=""/>
+  <property name="lastOpenPath" value="/mnt/mydata/EST-LP-MECA/Etude-Mecanique/2-Schema-cinematique2"/>
+  <property name="lastImagePath" value="file:///mnt/mydata/EST-LP-MECA/Etude-Mecanique/1-Schema-cinematique2"/>
   <property name="zoomStep" value="10.00000000"/>
   <property name="zoomStepScroll" value="2.00000000"/>
   <property name="displayDpi" value="72"/>
@@ -18,7 +18,7 @@
   <property name="sidebarOnRight" value="false"/>
   <property name="scrollbarOnLeft" value="false"/>
   <property name="menubarVisible" value="true"/>
-  <property name="numColumns" value="1"/>
+  <property name="numColumns" value="4"/>
   <property name="numRows" value="1"/>
   <property name="viewFixedRows" value="false"/>
   <property name="showPairedPages" value="false"/>
@@ -33,7 +33,7 @@
   <property name="presentationHideElements" value="mainMenubar,sidebarContents"/>
   <property name="showBigCursor" value="false"/>
   <property name="highlightPosition" value="false"/>
-  <property name="darkTheme" value="false"/>
+  <property name="darkTheme" value="true"/>
   <property name="disableScrollbarFadeout" value="false"/>
   <property name="scrollbarHideType" value="none"/>
   <!--Hides scroolbars in the main window, allowed values: "none", "horizontal", "vertical", "both"-->
@@ -65,7 +65,7 @@
   <property name="audioOutputDevice" value="-1"/>
   <property name="audioSampleRate" value="44100.00000000"/>
   <property name="audioGain" value="1.00000000"/>
-  <property name="pluginEnabled" value=""/>
+  <property name="pluginEnabled" value="ToggleGrid"/>
   <property name="pluginDisabled" value=""/>
   <property name="strokeFilterIgnoreTime" value="150"/>
   <property name="strokeFilterIgnoreLength" value="1.00000000"/>
@@ -76,7 +76,7 @@
   <property name="experimentalInputSystemEnabled" value="false"/>
   <property name="inputSystemTPCButton" value="false"/>
   <property name="inputSystemDrawOutsideWindow" value="true"/>
-  <property name="font" font="FiraCode Nerd Font Mono" size="10.00000000"/>
+  <property name="font" font="Noto Sans" size="14.00000000"/>
   <data name="buttonConfig">
     <data name="default">
       <attribute name="color" type="hex" value="ff1faced"/>
@@ -128,7 +128,7 @@
     </data>
   </data>
   <data name="tools">
-    <attribute name="current" type="string" value="pen"/>
+    <attribute name="current" type="string" value="selectRect"/>
     <data name="drawArrow">
       <attribute name="drawingType" type="string" value="default"/>
     </data>
@@ -150,21 +150,21 @@
       <attribute name="drawingType" type="string" value="default"/>
     </data>
     <data name="hilighter">
-      <attribute name="color" type="hex" value="ffff00"/>
+      <attribute name="color" type="hex" value="008000"/>
       <attribute name="drawingType" type="string" value="strokeRecognizer"/>
       <attribute name="fill" type="int" value="0"/>
       <attribute name="fillAlpha" type="int" value="128"/>
-      <attribute name="size" type="string" value="BIG"/>
+      <attribute name="size" type="string" value="MEDIUM"/>
     </data>
     <data name="image">
       <attribute name="drawingType" type="string" value="default"/>
     </data>
     <data name="pen">
-      <attribute name="color" type="hex" value="000000"/>
-      <attribute name="drawingType" type="string" value="strokeRecognizer"/>
+      <attribute name="color" type="hex" value="ff00ff"/>
+      <attribute name="drawingType" type="string" value="line"/>
       <attribute name="fill" type="int" value="0"/>
       <attribute name="fillAlpha" type="int" value="128"/>
-      <attribute name="size" type="string" value="BIG"/>
+      <attribute name="size" type="string" value="MEDIUM"/>
       <attribute name="style" type="string" value="plain"/>
     </data>
     <data name="playObject">
@@ -183,7 +183,7 @@
       <attribute name="drawingType" type="string" value="default"/>
     </data>
     <data name="text">
-      <attribute name="color" type="hex" value="000000"/>
+      <attribute name="color" type="hex" value="808080"/>
       <attribute name="drawingType" type="string" value="default"/>
     </data>
     <data name="verticalSpace">
